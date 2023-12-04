@@ -29,14 +29,14 @@ func NewProduct(name string, price int) (*Product, error) {
 		Price: price,
 		CreatedAt: time.Now(),
 	}
-	err := product.Validade()
+	err := product.Validate()
 	if err != nil {
 		return nil, err
 	}
 	return product, nil
 }
 
-func (p *Product) Validade() error {
+func (p *Product) Validate() error {
 	if p.ID.String() == "" {
 		return ErrIDIsRequired
 	}
