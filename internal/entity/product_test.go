@@ -13,11 +13,11 @@ func TestNewProduct(t *testing.T) {
 	assert.NotNil(t, p)
 	assert.NotEmpty(t, p.ID)
 	assert.Equal(t, "Product 1", p.Name)
-	assert.Equal(t, 1, p.Price)
+	assert.Equal(t, 1.0, p.Price)
 }
 
 func TestProductWhenNameIsRequired(t *testing.T) {
-	p, err := NewProduct("", 1)
+	p, err := NewProduct("", 1.0)
 
 	assert.Nil(t, p)
 	assert.NotNil(t, err)
@@ -25,14 +25,14 @@ func TestProductWhenNameIsRequired(t *testing.T) {
 }
 
 func TestProductWhenPriceIsRequired(t *testing.T) {
-	p, err := NewProduct("Product", 0)
+	p, err := NewProduct("Product", 0.0)
 	assert.Nil(t, p)
 	assert.NotNil(t, err)
 	assert.Equal(t, ErrPriceIsRequired, err)
 }
 
 func TestProductWhenPriceIsInvalid(t *testing.T) {
-	p, err := NewProduct("Product", -10)
+	p, err := NewProduct("Product", -10.0)
 	assert.Nil(t, p)
 	assert.NotNil(t, err)
 	assert.Equal(t, ErrInvalidPrice, err)
