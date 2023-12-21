@@ -131,12 +131,6 @@ paths:
         name: id
         required: true
         type: string
-      - description: product request
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/dto.CreateProductInput'
       produces:
       - application/json
       responses:
